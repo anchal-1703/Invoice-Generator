@@ -31,8 +31,8 @@ A complete GST Billing System built using **Laravel 11**. This system allows bus
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/gst-billing-laravel11.git
-cd gst-billing-laravel11
+git clone https://github.com/anchal-1703/Invoice-Generator.git
+cd Invoice-Generator
 
 ```
 ### 2. Install Dependencies
