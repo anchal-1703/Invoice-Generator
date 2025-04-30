@@ -1,66 +1,113 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 🧾 GST Billing System - Laravel 11
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+A complete GST Billing System built using **Laravel 11**. This system allows businesses to manage invoices, customers, products, and calculate GST for each transaction.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Features
 
--   [Simple, fast routing engine](https://laravel.com/docs/routing).
--   [Powerful dependency injection container](https://laravel.com/docs/container).
--   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
--   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
--   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
--   [Robust background job processing](https://laravel.com/docs/queues).
--   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- ✅ Customer management (CRUD)
+- ✅ Product/Service catalog with GST rates
+- ✅ Invoice creation with GST calculation (CGST, SGST, IGST)
+- ✅ PDF invoice generation
+- ✅ Dashboard with analytics
+- ✅ Role-based user access
+- ✅ Export invoices to Excel or PDF
+- ✅ Tax summary reports
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🛠️ Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Framework**: Laravel 11
+- **Frontend**: Blade, Bootstrap 5 / Tailwind (customizable)
+- **Database**: MySQL
+- **Authentication**: Laravel Breeze or Laravel Jetstream
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 📦 Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 1. Clone the Repository
 
-### Premium Partners
+```bash
+git clone https://github.com/yourusername/gst-billing-laravel11.git
+cd gst-billing-laravel11
 
--   **[Vehikl](https://vehikl.com/)**
--   **[Tighten Co.](https://tighten.co)**
--   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
--   **[64 Robots](https://64robots.com)**
--   **[Cubet Techno Labs](https://cubettech.com)**
--   **[Cyber-Duck](https://cyber-duck.co.uk)**
--   **[Many](https://www.many.co.uk)**
--   **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
--   **[DevSquad](https://devsquad.com)**
--   **[OP.GG](https://op.gg)**
+```
+### 2. Install Dependencies
 
-## Contributing
+```bash     
+composer install
+npm install && npm run dev
+```
+### 3. Environment Configuration
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Copy the `.env.example` file to `.env` and set up your database credentials.
 
-## Code of Conduct
+```bash
+cp .env.example .env    
+php artisan key:generate
+```
+### 4. Migrate the Database
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash 
+php artisan migrate --seed
+```
+### 5. Start the Development Server
 
-## Security Vulnerabilities
+```bash     
+php artisan serve
+```
+### 6. Access the Application       
+Open your browser and navigate to `http://localhost:8000`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 7. Login Credentials 
+```bash
+Email: admin@example.com
+Password: password
+```
+---
+## 📂 Folder Structure
 
-## License
+```            
+app/
+├── Models/
+│   ├── Customer.php
+│   ├── Product.php
+│   └── Invoice.php
+├── Http/Controllers/
+│   ├── CustomerController.php
+│   ├── ProductController.php
+│   └── InvoiceController.php
+resources/views/
+├── invoices/
+├── customers/
+└── dashboard.blade.php
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+---
 
-## Login Credentials
+##📊 GST Logic
 
-Email: admin@gmail.com
-Password: Pass@123
+1. GST calculated dynamically based on product tax slab
+
+2. Supports both intra-state (CGST + SGST) and inter-state (IGST) billing
+
+```bash
+$cgst = ($amount * $product->cgst) / 100;
+$sgst = ($amount * $product->sgst) / 100;
+$igst = ($amount * $product->igst) / 100;
+$total = $amount + $cgst + $sgst + $igst;
+```
+--- 
+
+## 📄 License   
+This project is licensed under the MIT License.
+
+---
+
+## 🙋‍♂️ Contributions
+Feel free to use, modify, and distribute it as per your needs.
+
+---
