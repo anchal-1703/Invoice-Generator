@@ -18,7 +18,8 @@ use Psy\Exception\FatalErrorException;
 
 class FunctionContextPass extends CodeCleanerPass
 {
-    private int $functionDepth = 0;
+    /** @var int */
+    private $functionDepth;
 
     /**
      * @param array $nodes

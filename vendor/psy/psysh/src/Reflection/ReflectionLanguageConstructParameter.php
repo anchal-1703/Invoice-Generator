@@ -18,17 +18,10 @@ namespace Psy\Reflection;
  */
 class ReflectionLanguageConstructParameter extends \ReflectionParameter
 {
-    /** @var string|array|object */
     private $function;
-    /** @var int|string */
     private $parameter;
-    private array $opts;
+    private $opts;
 
-    /**
-     * @param string|array|object $function
-     * @param int|string          $parameter
-     * @param array               $opts
-     */
     public function __construct($function, $parameter, array $opts)
     {
         $this->function = $function;

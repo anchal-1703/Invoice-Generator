@@ -19,7 +19,7 @@ class PartyController extends Controller
     public function index()
     {
         // Get all parties
-        //$parties = Party::all();
+        // $parties = Party::all();
 
         // Get all parties with specific columns
         $parties = Party::select(
@@ -36,40 +36,49 @@ class PartyController extends Controller
             'created_at'
         )->get();
 
-        return view("party.index", compact('parties'));
+        return view("indexParty", compact('parties'));
+        // return view("indexParty");
     }
 
     # Function to load add party view
     public function addParty()
     {
-        return view("party.add");
+        return view("addParty");
     }
 
     # Function to create/store party
     public function createParty(Request $request)
     {
-        // Valildation
-        $request->validate([
-            'party_type' => 'required',
-            'full_name' => 'required|string|min:2|max:20',
-            'phone_no' => 'required',
-            'address' => 'required|max:255',
-
-            'account_holder_name' => 'required|string|min:2|max:20',
-            'account_no' => 'required',
-            'bank_name' => 'required|max:255',
-            'ifsc_code' => 'required|max:50',
-            'branch_address' => 'required|max:255',
-        ]);
-
         $param = $request->all();
-
-        // Remove token from post data before inserting
+        $request->validate([
+                'party_type' => 'required',
+                'full_name' => 'required|string|min:2|max:20',
+                'phone_no' => 'required|numeric|digits:10',
+                'address' => 'required|max:255',   
+                'account_holder_name' => 'required|string|min:2|max:20',
+                'account_no' => 'required',
+                'bank_name' => 'required|max:255',
+                'ifsc_code' => 'required|max:50',                               
+                'branch_address' => 'required|max:255',
+            ]);
         unset($param['_token']);
         Party::create($param);
+        #redirect with withstatus() function in session('status')
+                return redirect()->route('add-party')->withstatus("party created succesfully");
+        #redirect with with() function using key value pass in session('key')
+        // return redirect()->route('add-party')->with('success',"party created succesfully");
+
+        // Valildation
+        //
+
+        // $param = $request->all();
+
+        // Remove token from post data before inserting
+        // unset($param['_token']);
+        // Party::create($param);
 
         // Redirect to add party back
-        return redirect()->route('add-party')->withStatus("Party created successfully");
+        // return redirect()->route('add-party')->withStatus("Party created successfully");
 
         //return redirect()->route('add-party')->with('success', 'Party created successfully');
     }
@@ -77,15 +86,20 @@ class PartyController extends Controller
     # Function to load edit party view
     public function editParty($party_id)
     {
-        $data['party'] = Party::find($party_id);
-        return view("party.edit", $data);
+       $data['party'] = Party::find($party_id);
+    //    echo"
+    //    <pre>";
+    //    print_r($party);
+    //    exit;
+
+        return view("edit", $data);
     }
 
     # Function to update party data
-    public function updateParty($id, Request $request)
-    {
+    public function updateParty($id,Request $request)
+    {       
         // Valildation
-        $request->validate([
+        $request->validate([                         
             'party_type' => 'required',
             'full_name' => 'required|string|min:2|max:20',
             'phone_no' => 'required',
@@ -96,16 +110,14 @@ class PartyController extends Controller
             'ifsc_code' => 'required|max:50',
             'branch_address' => 'required|max:255',
         ]);
-
-        // Update the record
+        // // Update the record
         $param = $request->all();
         unset($param['_token']);
         unset($param['_method']);
         Party::where('id', $id)->update($param);
         return redirect()->route('manage-parties')->withStatus("Party updated successfully");
     }
-
-    ## Function to delete party
+    ## Function to delete party in parameter pass model_name
     public function deleteParty(Party $party)
     {
         $party->delete();

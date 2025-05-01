@@ -48,13 +48,13 @@ use Psy\Exception\ParseErrorException;
  */
 class CodeCleaner
 {
-    private bool $yolo = false;
-    private bool $strictTypes = false;
+    private $yolo = false;
+    private $strictTypes = false;
 
-    private Parser $parser;
-    private Printer $printer;
-    private NodeTraverser $traverser;
-    private ?array $namespace = null;
+    private $parser;
+    private $printer;
+    private $traverser;
+    private $namespace;
 
     /**
      * CodeCleaner constructor.
@@ -259,6 +259,8 @@ class CodeCleaner
 
     /**
      * Set the current local namespace.
+     *
+     * @param array|null $namespace (default: null)
      */
     public function setNamespace(?array $namespace = null)
     {
@@ -282,6 +284,9 @@ class CodeCleaner
      *
      * @throws ParseErrorException for parse errors that can't be resolved by
      *                             waiting a line to see what comes next
+     *
+     * @param string $code
+     * @param bool   $requireSemicolons
      *
      * @return array|false A set of statements, or false if incomplete
      */
@@ -332,6 +337,9 @@ class CodeCleaner
      * Unlike (all?) other unclosed statements, single quoted strings have
      * their own special beautiful snowflake syntax error just for
      * themselves.
+     *
+     * @param \PhpParser\Error $e
+     * @param string           $code
      */
     private function parseErrorIsUnclosedString(\PhpParser\Error $e, string $code): bool
     {
@@ -348,12 +356,12 @@ class CodeCleaner
         return true;
     }
 
-    private function parseErrorIsUnterminatedComment(\PhpParser\Error $e, string $code): bool
+    private function parseErrorIsUnterminatedComment(\PhpParser\Error $e, $code): bool
     {
         return $e->getRawMessage() === 'Unterminated comment';
     }
 
-    private function parseErrorIsTrailingComma(\PhpParser\Error $e, string $code): bool
+    private function parseErrorIsTrailingComma(\PhpParser\Error $e, $code): bool
     {
         return ($e->getRawMessage() === 'A trailing comma is not allowed here') && (\substr(\rtrim($code), -1) === ',');
     }

@@ -29,8 +29,8 @@ use Psy\CodeCleaner;
  */
 class NamespacePass extends CodeCleanerPass
 {
-    private ?Name $namespace = null;
-    private CodeCleaner $cleaner;
+    private $namespace = null;
+    private $cleaner;
 
     /**
      * @param CodeCleaner $cleaner
@@ -83,7 +83,7 @@ class NamespacePass extends CodeCleanerPass
      *
      * @param Name|null $namespace
      */
-    private function setNamespace(?Name $namespace)
+    private function setNamespace($namespace)
     {
         $this->namespace = $namespace;
         $this->cleaner->setNamespace($namespace === null ? null : $this->getParts($namespace));

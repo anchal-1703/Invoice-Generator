@@ -31,8 +31,8 @@ abstract class Enumerator
     const IS_CLASS = 'class';
     const IS_FUNCTION = 'function';
 
-    private FilterOptions $filter;
-    private Presenter $presenter;
+    private $filter;
+    private $presenter;
 
     /**
      * Enumerator constructor.

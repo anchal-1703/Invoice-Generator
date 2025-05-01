@@ -28,6 +28,7 @@ class GstBill extends Model
         "tax_amount",
         "net_amount",
         "declaration",
+        "payment_method"
     );
 
     public function party()

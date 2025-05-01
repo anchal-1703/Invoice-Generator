@@ -74,16 +74,16 @@ class Theme
 
     const ERROR_STYLES = ['info', 'warning', 'error', 'whisper', 'class'];
 
-    private bool $compact = false;
+    private $compact = false;
 
-    private string $prompt = '> ';
-    private string $bufferPrompt = '. ';
-    private string $replayPrompt = '- ';
-    private string $returnValue = '= ';
+    private $prompt = '> ';
+    private $bufferPrompt = '. ';
+    private $replayPrompt = '- ';
+    private $returnValue = '= ';
 
-    private string $grayFallback = 'blue';
+    private $grayFallback = 'blue';
 
-    private array $styles = [];
+    private $styles = [];
 
     /**
      * @param string|array $config theme name or config options

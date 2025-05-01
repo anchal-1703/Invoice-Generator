@@ -26,8 +26,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class HistoryCommand extends Command
 {
-    private FilterOptions $filter;
-    private Readline $readline;
+    private $filter;
+    private $readline;
 
     /**
      * {@inheritdoc}
@@ -135,8 +135,7 @@ HELP
 
             $count = \count($history);
             $output->writeln(\sprintf('Replaying %d line%s of history', $count, ($count !== 1) ? 's' : ''));
-
-            $this->getShell()->addInput($history);
+            $this->getApplication()->addInput($history);
         } elseif ($input->getOption('clear')) {
             $this->clearHistory();
             $output->writeln('<info>History cleared.</info>');
@@ -157,12 +156,12 @@ HELP
      *
      * @param string $range
      *
-     * @return int[] [ start, end ]
+     * @return array [ start, end ]
      */
     private function extractRange(string $range): array
     {
         if (\preg_match('/^\d+$/', $range)) {
-            return [(int) $range, (int) $range + 1];
+            return [$range, $range + 1];
         }
 
         $matches = [];
@@ -207,7 +206,7 @@ HELP
                 throw new \InvalidArgumentException('Please specify an integer argument for --tail');
             }
 
-            $start = \count($history) - (int) $tail;
+            $start = \count($history) - $tail;
             $length = (int) $tail + 1;
         } else {
             return $history;

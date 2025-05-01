@@ -27,9 +27,14 @@ class SelfUpdate
     const SUCCESS = 0;
     const FAILURE = 1;
 
-    private Checker $checker;
-    private Installer $installer;
-    private ?Downloader $downloader = null;
+    /** @var Checker */
+    private $checker;
+
+    /** @var Installer */
+    private $installer;
+
+    /** @var Downloader */
+    private $downloader;
 
     public function __construct(Checker $checker, Installer $installer)
     {
@@ -39,6 +44,8 @@ class SelfUpdate
 
     /**
      * Allow the downloader to be injected for testing.
+     *
+     * @param Downloader $downloader
      *
      * @return void
      */
@@ -66,6 +73,8 @@ class SelfUpdate
      *
      * The file name used in the URL will include the flavour postfix extracted from the current version
      * if it's present
+     *
+     * @param string $latestVersion
      */
     private function getAssetUrl(string $latestVersion): string
     {
@@ -82,6 +91,9 @@ class SelfUpdate
 
     /**
      * Execute the self-update process.
+     *
+     * @param InputInterface  $input
+     * @param OutputInterface $output
      *
      * @throws ErrorException if the current version is not restored when installation fails
      */

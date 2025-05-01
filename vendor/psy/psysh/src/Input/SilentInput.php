@@ -20,7 +20,7 @@ namespace Psy\Input;
  */
 class SilentInput
 {
-    private string $inputString;
+    private $inputString;
 
     /**
      * Constructor.

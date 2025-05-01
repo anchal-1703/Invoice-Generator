@@ -9,16 +9,16 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App css -->
-    <link href="{{ asset('public/assets/css2/bootstrap-creative.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-    <link href="{{ asset('public/assets/css2/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+    <link href="{{ asset('css2/bootstrap-creative.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="{{ asset('css2/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-    <link href="{{ asset('public/assets/css2/bootstrap-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
-    <link href="{{ asset('public/assets/css2/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" disabled />
+    <link href="{{ asset('css2/bootstrap-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
+    <link href="{{ asset('css2/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" disabled />
 
     <!-- icons -->
-    <link href="{{ asset('public/assets/css2/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css2/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" href="{{ asset('public/assets/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css2/style.css') }}">
 
 
 </head>
@@ -53,7 +53,7 @@
                                 <!-- Logo & title -->
                                 <div class="clearfix ">
                                     <div class="text-right">
-                                        <h6><b>Date : </b><Span>02/09/2023</Span></h6>
+                                        <h6><b>Date : </b></h6>
                                         <!-- <h1>GoBulky</h1> -->
                                     </div>
                                     <!-- <div class="text-center">
@@ -91,31 +91,32 @@
                                         <div class="row pl-2 pt-1">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">Name : </label>
-                                                <input type="text" style="border: none; line-height: -10;">
+                                                <span>{{$data->full_name}} </span>
+                                                <input type="text" style="border: none; line-height: -10;" >
                                             </div>
                                         </div>
                                         <div class="row pl-2">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">Address : </label>
-                                                <span></span>
+                                                <span>{{$data->address}}</span>
                                             </div>
                                         </div>
                                         <div class="row pl-2">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">Phone : </label>
-                                                <span></span>
+                                                <span>{{$data->phone_no}}</span>
                                             </div>
                                         </div>
-                                        <div class="row pl-2 pb-1">
+                                        <!-- <div class="row pl-2 pb-1">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">State : </label>
-                                                <span></span>
+                                                <span>{{$data->address}}</span>
                                             </div>
                                             <div class="col-12 d-flex pb-1">
-                                                <label for="">State Code : <span><b></b></span> </label>
-                                                <!-- <input type="text" style="border: none; width: 30px;"> -->
+                                                <label for="">State Code : <span><b>{{$data->address}}</b></span> </label>
+                                                <input type="text" style="border: none; width: 30px;"> 
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="col-md-5 border p-0">
                                         <b>
@@ -126,31 +127,31 @@
                                         <div class="row pl-2 pt-1">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">Account Holder Name : </label>
-                                                <span></span>
+                                                <span>{{$data->account_holder_name}}</span>
                                             </div>
                                         </div>
                                         <div class="row pl-2">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">Account Number : </label>
-                                                <span></span>
+                                                <span>{{$data->account_no}}</span>
                                             </div>
                                         </div>
                                         <div class="row pl-2">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">Bank Name : </label>
-                                                <span></span>
+                                                <span>{{$data->bank_name}}</span>
                                             </div>
                                         </div>
                                         <div class="row pl-2">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">Bank Address : </label>
-                                                <span></span>
+                                                <span>{{$data->branch_address}}</span>
                                             </div>
                                         </div>
                                         <div class="row pl-2 pb-1">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">IFSC Code : </label>
-                                                <span></span>
+                                                <span>{{$data->ifsc_code}}</span>
                                             </div>
 
                                         </div>
@@ -164,25 +165,25 @@
                                         <div class="row pl-2 pt-1">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">Revrce Charge : </label>
-                                                <span></span>
+                                                <span>{{$data->address}}</span>
                                             </div>
                                         </div>
                                         <div class="row pl-2">
                                             <div class="col-12 d-flex justiy-content-start">
-                                                <label for="">Invoice No : </label>
-                                                <span></span>
+                                                <label for="">Invoice No :</label>
+                                                <span> {{$data->address}}</span>
                                             </div>
                                         </div>
                                         <div class="row pl-2">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">Invoice Date : </label>
-                                                <span></span>
+                                                <span>{{$data->address}}</span>
                                             </div>
                                         </div>
                                         <div class="row pl-2 pb-1">
                                             <div class="col-12 d-flex justiy-content-start">
                                                 <label for="">State : </label>
-                                                <span></span>
+                                                <span>{{$data->address}}</span>
                                             </div>
                                             <div class="col-12 d-flex pb-1">
                                                 <label for="">State Code : <span><b>08</b></span> </label>

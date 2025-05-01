@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .sidebar1 {
+            width: 250px;
+            height: 100%;
+            background-color: #111;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-x: hidden;
+            transition: width 0.5s;
+        }
+
+        .sidebar1 .menu-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar1 .menu-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar1 .menu-items .item {
+            padding: 15px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: #818181;
+            transition: color 0.3s;
+        }
+
+        .sidebar1 .menu-items .item a {
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar1 .menu-items .item:hover {
+            color: #f1f1f1;
+        }
+
+        .sidebar1 .menu-items .item i {
+            margin-right: 10px;
+        }
+
+        .sidebar1 .menu-items .submenu {
+            display: none;
+            flex-direction: column;
+            padding-left: 20px;
+        }
+
+        .sidebar1 .menu-items .sub-nmenuitem {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .sidebar1 .menu-items .sub-nmenuitem:hover + .submenu,
+        .sidebar1 .menu-items .submenu:hover {
+            display: flex;
+        }
+
+        .sidebar1 .logout {
+            padding: 15px;
+            text-decoration: none;
+            color: #818181;
+            background: none;
+            border: none;
+            text-align: left;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .sidebar1 .logout:hover {
+            color: #f1f1f1;
+        }
+
+        .menu-title {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar1 {
+                width: 38px;
+            }
+
+            .sidebar1 .menu-items .item span,
+            .sidebar1 .menu-items .sub-nmenuitem span,
+            .sidebar1 .menu-items .submenu .menu-title {
+                overflow: visible;
+                background-color: #111;
+                color: #f1f1f1;
+            }
+            .sidebar1 .menu-items .item{
+                display: block;
+                position: absolute;
+                overflow: visible;
+                background-color: #111;
+                color: #f1f1f1;
+                z-index: 1050;
+            }
+
+            .sidebar1 .menu-items .sub-nmenuitem {
+                justify-content: center;
+            }
+
+            .sidebar1 .menu-items .submenu {
+                padding-left: 0;
+            }
+            .sidebar1 .menu-items .item span:hover,
+            .sidebar1 .menu-items .sub-nmenuitem span:hover,
+            .sidebar1 .menu-items .submenu .menu-title:hover {
+            display: block;
+            overflow: visible;        }
+            .sidebar1 .menu-items+ .sidebar1 i:hover{
+                display: block;
+                overflow: visible;
+            } 
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar1">
+        <div class="menu-content">
+            <ul class="menu-items">
+                <li class="item">
+                    <a href="/dashboard"><i class="fas fa-tachometer-alt"></i><span> Dashboard </span></a>
+                </li>
+                <li class="item">
+                    <div class="sub-nmenuitem">
+                        <i class="fas fa-user"></i> <span>User</span>
+                        <i class="fa fa-caret-right"></i>
+                    </div>
+                    <ul class="menu-items submenu">
+                        <div class="menu-title"> <i class="fa fa-caret-left"></i><span>User</span>
+                        </div>
+                        <li class="item">
+                            <a href="/management"><i class="fas fa-tachometer-alt"></i><span> Management </span></a>
+                        </li>
+                        <li class="item">
+                            <a href="/report"><i class="fas fa-tachometer-alt"></i><span> Report </span></a>
+                        </li>
+                        <li class="item">
+                            <a href="/profile"><i class="fas fa-tachometer-alt"></i><span> Profile </span></a>
+                        </li>
+                        <li class="item">
+                            <a href="/settings"><i class="fas fa-tachometer-alt"></i><span> Settings </span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <a href="{{ route('pension') }}"><i class="fas fa-file-alt"></i><span> Pension cases </span></a>
+                </li>
+                <li class="item">
+                    <div class="sub-nmenuitem">
+                        <i class="fas fa-user"></i> <span>User</span>
+                        <i class="fa fa-caret-right"></i></div>
+                    <ul class="menu-items submenu">
+                        <div class="menu-title"> <i class="fa fa-caret-left"></i> <span>User</span>
+                        </div>
+                        <li class="item">
+                            <a href="/Management"><i class="fas fa-tachometer-alt"></i><span> Management </span></a>
+                        </li>
+                        <li class="item">
+                            <a href="/Report"><i class="fas fa-tachometer-alt"></i><span> Report </span></a>
+                        </li>
+                        <li class="item">
+                            <a href="/Profile"><i class="fas fa-tachometer-alt"></i><span> Profile </span></a>
+                        </li>
+                        <li class="item">
+                            <a href="/settings"><i class="fas fa-tachometer-alt"></i><span> Settings </span></a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <form method="POST" action="{{ route('logout') }}">
+            <button type="submit" class="logout"><i class="fas fa-sign-out-alt"></i>Logout</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

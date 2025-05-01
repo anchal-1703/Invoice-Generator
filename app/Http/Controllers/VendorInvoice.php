@@ -42,6 +42,7 @@ class VendorInvoice extends Controller
             ->first();
         if (!empty($party)) {
             $party_id = $party->id;
+          
         } else {
             # Create new party
             $param = array(
@@ -88,8 +89,14 @@ class VendorInvoice extends Controller
      */
     public function show($id)
     {
-        $invoice = DB::table('vendor_invoices')->where('id', $id)->first();
-        return view('vendor-invoice.print', compact('invoice'));
+        $data = DB::table('vendor_invoices')
+    ->join('parties', 'vendor_invoices.party_id', '=', 'parties.id')
+    ->join('gst_bills', 'vendor_invoices.party_id', '=', 'gst_bills.party_id') 
+    ->where('vendor_invoices.party_id', $id)
+    ->first();
+      
+        // $invoice = DB::table('vendor_invoices')->where('id', $id)->first();
+        return view('vendor-invoice.print', compact('data'));
     }
 
     /**

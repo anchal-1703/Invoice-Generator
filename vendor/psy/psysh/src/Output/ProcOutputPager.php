@@ -23,13 +23,10 @@ use Symfony\Component\Console\Output\StreamOutput;
  */
 class ProcOutputPager extends StreamOutput implements OutputPager
 {
-    /** @var ?resource */
-    private $proc = null;
-    /** @var ?resource */
-    private $pipe = null;
-    /** @var resource */
+    private $proc;
+    private $pipe;
     private $stream;
-    private string $cmd;
+    private $cmd;
 
     /**
      * Constructor.

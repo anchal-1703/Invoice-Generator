@@ -20,7 +20,7 @@ use Psy\Exception\FatalErrorException;
  */
 class FinalClassPass extends CodeCleanerPass
 {
-    private array $finalClasses = [];
+    private $finalClasses;
 
     /**
      * @param array $nodes

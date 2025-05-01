@@ -57,6 +57,8 @@ class Installer
 
     /**
      * Verifies the downloaded archive can be extracted with \PharData.
+     *
+     * @param string $sourceArchive
      */
     public function isValidSource(string $sourceArchive): bool
     {
@@ -70,6 +72,8 @@ class Installer
 
     /**
      * Extract the "psysh" phar from the archive and move it, replacing the currently installed phar.
+     *
+     * @param string $sourceArchive
      */
     public function install(string $sourceArchive): bool
     {
@@ -93,6 +97,8 @@ class Installer
 
     /**
      * Create a backup of the currently installed PsySH phar in the temporary directory with a version number postfix.
+     *
+     * @param string $version
      */
     public function createBackup(string $version): bool
     {
@@ -107,6 +113,8 @@ class Installer
 
     /**
      * Restore the backup file to the original PsySH install location.
+     *
+     * @param string $version
      *
      * @throws ErrorException If the backup file could not be found
      */
@@ -123,6 +131,8 @@ class Installer
 
     /**
      * Get the full path for the backup target file location.
+     *
+     * @param string $version
      */
     public function getBackupFilename(string $version): string
     {

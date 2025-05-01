@@ -16,7 +16,7 @@ namespace Psy\Exception;
  */
 class RuntimeException extends \RuntimeException implements Exception
 {
-    private string $rawMessage;
+    private $rawMessage;
 
     /**
      * Make this bad boy.

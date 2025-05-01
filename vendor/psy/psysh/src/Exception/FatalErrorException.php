@@ -16,7 +16,7 @@ namespace Psy\Exception;
  */
 class FatalErrorException extends \ErrorException implements Exception
 {
-    private string $rawMessage;
+    private $rawMessage;
 
     /**
      * Create a fatal error.

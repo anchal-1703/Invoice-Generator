@@ -9,16 +9,16 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App css -->
-    <link href="{{ asset('public/assets/css2/bootstrap-creative.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-    <link href="{{ asset('public/assets/css2/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+    <link href="{{ asset('css2/bootstrap-creative.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+    <link href="{{ asset('css2/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-    <link href="{{ asset('public/assets/css2/bootstrap-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
-    <link href="{{ asset('public/assets/css2/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" disabled />
+    <link href="{{ asset('css2/bootstrap-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" disabled />
+    <link href="{{ asset('css2/app-creative-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" disabled />
 
     <!-- icons -->
-    <link href="{{ asset('public/assets/css2/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css2/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" href="{{ asset('public/assets/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css2/style.css') }}">
 
 </head>
 
@@ -74,7 +74,7 @@
 
                                             <div class="form-group col-md-4">
                                                 <label for="">Invoice Date</label>
-                                                <input type="date" name="invoice_date" class="form-control border-bottom" id="validationCustom01">
+                                                <input type="date" name="invoice_date" class="form-control border-bottom" id="invoice_date">
                                             </div>
                                         </div>
                                         <h4 class="page-title pt-2"><i data-feather="edit-3" class="pr-0 mr-1"></i>ENTER
@@ -168,19 +168,19 @@
     <!-- END wrapper -->
 
     <!-- Vendor js -->
-    <script src="{{ asset('public/assets/js2/vendor.min.js') }}"></script>
+    <script src="{{ asset('js2/vendor.min.js') }}"></script>
 
     <!-- Plugins js-->
-    <script src="{{ asset('public/assets/libs2/flatpickr/flatpickr.min.js') }}"></script>
-    <script src="{{ asset('public/assets/libs2/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('libs2/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('libs2/apexcharts/apexcharts.min.js') }}"></script>
 
     <!-- Dashboar 1 init js-->
-    <script src="{{ asset('public/assets/js2/pages/dashboard-1.init.js') }}"></script>
+    <script src="{{ asset('js2/pages/dashboard-1.init.js') }}"></script>
 
     <!-- App js-->
-    <script src="{{ asset('public/assets/js2/app.min.js') }}"></script>
+    <script src="{{ asset('js2/app.min.js') }}"></script>
 
-    <script src="{{ asset('public/assets/script.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 
 </html>

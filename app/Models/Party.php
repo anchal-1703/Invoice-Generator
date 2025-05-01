@@ -22,7 +22,8 @@ class Party extends Model
         "account_no",
         "bank_name",
         "ifsc_code",
-        "branch_address"
+        "branch_address",
+        
     );
 
     public function gstBills()

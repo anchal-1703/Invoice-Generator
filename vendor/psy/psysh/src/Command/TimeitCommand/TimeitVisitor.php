@@ -31,7 +31,7 @@ use Psy\Command\TimeitCommand;
  */
 class TimeitVisitor extends NodeVisitorAbstract
 {
-    private int $functionDepth = 0;
+    private $functionDepth;
 
     /**
      * {@inheritdoc}
